@@ -5,74 +5,81 @@
     font-family: 'Times New Roman', Times, serif;
 }
 .body{
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    
     
 }
 .main{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
-    flex-direction: row;
+    overflow-x: hidden;
+
+    background-color: rgba(15, 18, 21, 1);
     
-    flex-wrap: nowrap;
-    background-color: aqua;
+
 }
-.left-sidebar{
-    width: 15vw;
+.left-sider{
+    width: 11.5%;
     height: 100vh;
     color: white;
-    /* background-color: linear-gradient(19, 26, 32, 1); */
     background-image: linear-gradient(rgba(19, 26, 32, 1), rgba(38, 74, 88, 1), rgba(19, 26, 32, 1));
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    position: fixed;
+    overflow: hidden;
     
-}
-.title{
-    padding: 1rem;
-}
-.left-sidebar-footer{
-    display: flex;
-    flex-direction: column;
-    text-align: start;
-    padding: 2rem;
-    font-family: Poppins;
-    font-weight: 400;
-    gap: 1rem;
 
 }
+
 .right-sider{
+    max-width:100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     
    
-
+    
 }
 .navbar{
-    width: 85vw;
-    height: 10vh;
+    width: 100%;
+    height: 8%;
     color: white;
     background-color: rgba(19, 26, 32, 1);
     position: fixed;
     top: 0%;
-
-}
-.middle{
-    background-color: rgba(15, 18, 21, 1);
-    width: 85vw;
-    height: 80vh;
-    color: white;
+    display: flex;
+    left: 11.5%;
+    
     
 
 }
+.middle{
+    
+    width: 100vw;
+    color: white;
+    background-color: rgba(15, 18, 21, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 8vh;
+    margin-bottom: 15vh;
+    padding-block: 100px;
+    margin-left: 11.5%;
+    
+    
+   
+}
+
 .footer{
-    width: 85vw;
-    height: 15vh;
+    width: 100%;
+    height: 15%;
     color: white;
     background-color: rgba(19, 26, 32, 1);
     position: fixed;
@@ -80,7 +87,7 @@
     padding: 1.5rem;
     display: flex;
     justify-content: center;
-}
-.input-box{
-    width: 90vw;
+    left: 11.5%;
+    
+    
 }

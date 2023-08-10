@@ -1,0 +1,39 @@
+.input-div{
+    width: 100%;
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: rgba(15, 18, 21, 1);
+    border-radius: 0.5rem;
+    margin-left: 20%;
+    margin-right: 30%;
+    padding-right: 1rem;
+    
+    
+    
+}
+.input{
+    width: 100%;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    text-align: start;
+    
+    
+}
+.img1{
+   
+  width: 30px;
+  height: 25px;
+  margin-top: 0.3rem;
+  margin-left: 0.5rem;
+  color: aliceblue !important;
+  
+}

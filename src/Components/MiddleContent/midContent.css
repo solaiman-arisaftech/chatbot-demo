@@ -1,0 +1,113 @@
+.initial-msg-box{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20% ;
+    padding: 1rem;
+    display: flex;
+    top: 5rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+}
+.chatBot{
+   
+    font-size: 40px;
+    font-weight: 400 ;
+    color: white;
+}
+.welcome{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+.lorem-msg{
+    font-size: 16px;
+    color: #6c757d;
+    display: flex;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+/* <!--Middle Content--> */
+
+.mid-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 21%;
+    margin-right: 30.5%;
+    
+    
+}
+.prompt-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+    
+   
+
+}
+.answer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(19, 26, 32, 1);
+    gap: 1rem;
+    padding: 1rem;
+    
+}
+.mb-1{
+    margin-bottom: 1rem;
+}
+.mt-1{
+    margin-top: 0.5rem;
+}
+.mt-5{
+    margin-top: 5rem !important;
+    margin-bottom: 5rem !important;
+}
+
+/* Footer */
+.input-div{
+    width: 100%;
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: rgba(15, 18, 21, 1);
+    border-radius: 0.5rem;
+    margin-left: 20%;
+    margin-right: 30%;
+    padding-right: 1rem;
+    
+    
+    
+}
+.input{
+    width: 100%;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    text-align: start;
+    
+    
+}
+.img1{
+   
+  width: 30px;
+  height: 25px;
+  margin-top: 0.3rem;
+  margin-left: 0.5rem;
+  color: aliceblue !important;
+  
+}

@@ -1,0 +1,6 @@
+.menu-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 1rem;
+}
