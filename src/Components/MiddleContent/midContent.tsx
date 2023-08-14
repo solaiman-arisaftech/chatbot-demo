@@ -17,13 +17,20 @@ interface Item {
 }
 const MidContent = () => {
   const [data, setData] = useState("");
+  const [loading, setLoading] = useState(false);
+  // const [clearInput, setClearInput] = useState('')
   const promptRef = useRef<any>(null);
   const fileRef = useRef<any>(null);
   const [flag, setFlag] = useState(false);
   const [arr, setArr] = useState<Item[]>([{ p: "", q: "" }]);
+ 
+
 
   const handleSubmit = async (e: any) => {
+    
     e.preventDefault();
+    setLoading(true);
+    
     console.log(promptRef.current?.value);
     const res = await axios({
       method: "post",
@@ -38,9 +45,11 @@ const MidContent = () => {
         file: fileRef.current?.value,
       },
     });
+    
     // const obj = {answer: res.data}
     setData(res.data.response);
     console.log(res.data.response);
+    
     if (res.data.response) {
       setFlag(!flag);
       const obj = {
@@ -51,6 +60,12 @@ const MidContent = () => {
       updatedArr[0] = { p: promptRef.current?.value, q: res.data.response };
       setArr(updatedArr);
     }
+    setLoading(false);
+    
+    
+
+ 
+
   };
   return (
     <>
@@ -92,7 +107,12 @@ const MidContent = () => {
                   }}
                 />
               </div>
-              <div className="input ">{promptRef ? data : " "}</div>
+              <div className="input ">
+                {!loading && promptRef ? data : " "}
+                {loading && <p>Loading...</p>}
+                {/* {promptRef ? data : " "} */}
+                
+                </div>
               <div className="mt-1">
                 <img className=" " src={CopyIcon} alt="logo" />
               </div>
@@ -120,19 +140,23 @@ const MidContent = () => {
                 type="text"
                 placeholder="Send a message"
                 ref={promptRef}
+                // value={clearInput}
+                // onChange={(e)=> setClearInput(e.target.value)}
+
+
               />
 
               <label htmlFor="submit">
-                <img className="img1" src={SendIcon} alt="" />
+                <img className="img1" src={SendIcon} alt=" "  />
               </label>
               <input
                 className="input"
                 type="submit"
                 id="submit"
+                // onClick={handleClick}
                 style={{ display: "none", visibility: "hidden" }}
               />
-              {/* <input className="input"  type="text" placeholder="Send a message"  ref={promptRef}/>
-            <input className="input" type="submit" id="submit"  /> */}
+              
             </form>
           </div>
         </div>
@@ -173,7 +197,12 @@ const MidContent = () => {
                     }}
                   />
                 </div>
-                <div className="input ">{m.q}</div>
+                <div className="response input ">
+                  {/* {m.q} */}
+                  {!loading && m.q}
+                  {loading && <p>Loading...</p>}
+                
+                </div>
                 <div className="mt-1">
                   <img className=" " src={CopyIcon} alt="logo" />
                 </div>
@@ -181,6 +210,7 @@ const MidContent = () => {
             </div>
             <div className="footer">
               <form className="input-div " onSubmit={handleSubmit}>
+              
                 <label htmlFor="upload">
                   <img
                     className="img1"
@@ -202,7 +232,7 @@ const MidContent = () => {
                   placeholder="Send a message"
                   ref={promptRef}
                 />
-
+                
                 <label htmlFor="submit">
                   <img className="img1" src={SendIcon} alt="" />
                 </label>
@@ -210,10 +240,10 @@ const MidContent = () => {
                   className="input"
                   type="submit"
                   id="submit"
+                  // onClick={handleClick}
                   style={{ display: "none", visibility: "hidden" }}
                 />
-                {/* <input className="input"  type="text" placeholder="Send a message"  ref={promptRef}/>
-            <input className="input" type="submit" id="submit"  /> */}
+               
               </form>
             </div>
           </div>
