@@ -15,16 +15,20 @@ interface Item {
   p: string;
   q: string;
 }
-const MidContent = () => {
+
+interface MidContentProps {
+  arr: Item[];
+  setArr: React.Dispatch<React.SetStateAction<Item[]>>;
+}
+
+const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
   // const [clearInput, setClearInput] = useState('')
   const promptRef = useRef<any>(null);
   const fileRef = useRef<any>(null);
   const [flag, setFlag] = useState(false);
-  const [arr, setArr] = useState<Item[]>([{ p: "", q: "" }]);
- 
-
+  // const [arr, setArr] = useState<Item[]>([{ p: "", q: "" }]);
 
   const handleSubmit = async (e: any) => {
     
@@ -56,8 +60,7 @@ const MidContent = () => {
         p: promptRef.current?.value,
         q: res.data.response,
       };
-      const updatedArr = [...arr];
-      updatedArr[0] = { p: promptRef.current?.value, q: res.data.response };
+      const updatedArr = [...arr, obj];
       setArr(updatedArr);
     }
     setLoading(false);
@@ -67,6 +70,7 @@ const MidContent = () => {
  
 
   };
+  useEffect(() => {}, [arr]);
   return (
     <>
       {!flag ? (
