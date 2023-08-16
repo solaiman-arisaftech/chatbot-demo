@@ -18,9 +18,7 @@ const InitialMessage = () => {
         </div>
           
       </div>
-      <div className="footer">
-        <Footer/>
-      </div>
+      
       
 
     

@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import Footer from "../Footer/footer";
 import { log } from "console";
+import InitialMessage from "./initialMsg";
 
 interface Item {
   p: string;
@@ -73,8 +74,8 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   useEffect(() => {}, [arr]);
   return (
     <>
-      {!flag ? (
-        <div>
+      {arr.length!==0 ? (
+        <div className="mid-d">
           <div className="mid-box  ">
             <div className="prompt-box ">
               <div className="mt-1">
@@ -112,9 +113,9 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                 />
               </div>
               <div className="input ">
-                {!loading && promptRef ? data : " "}
+                {/* {!loading && promptRef ? data : " "} */}
                 {loading && <p>Loading...</p>}
-                {/* {promptRef ? data : " "} */}
+                {promptRef ? data : " "}
                 
                 </div>
               <div className="mt-1">
@@ -164,94 +165,101 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
             </form>
           </div>
         </div>
+        // <div>
+        //         <InitialMessage />
+        // </div>
+       
       ) : (
-        arr.map((m: any) => (
-          <div>
-            <div className="mid-box  ">
-              <div className="prompt-box ">
-                <div className="mt-1">
-                  <img
-                    className=" "
-                    src={ProfileIcon}
-                    alt="logo"
-                    style={{
-                      height: "25px",
-                      width: "25px",
-                      borderRadius: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
+        // <div className="mid-scroll">
+            arr.map((m: any) => 
+              <div>
+                <div className="mid-box  ">
+                  <div className="prompt-box ">
+                    <div className="mt-1">
+                      <img
+                        className=" "
+                        src={ProfileIcon}
+                        alt="logo"
+                        style={{
+                          height: "25px",
+                          width: "25px",
+                          borderRadius: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+                    <div className="input ">{m.p}</div>
+                    <div className="">
+                      <img className="mt-1 " src={EditIcon} alt="logo" />
+                    </div>
+                  </div>
+                  <div className="answer mb-1 ">
+                    <div className="mt-1">
+                      <img
+                        className=" "
+                        src={ChatBotLogo}
+                        alt="logo"
+                        style={{
+                          height: "25px",
+                          width: "25px",
+                          borderRadius: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+                    <div className="response input ">
+                      {/* {m.q} */}
+                      {!loading && m.q}
+                      {loading && <p>Loading...</p>}
+                    
+                    </div>
+                    <div className="mt-1">
+                      <img className=" " src={CopyIcon} alt="logo" />
+                    </div>
+                  </div>
                 </div>
-                <div className="input ">{m.p}</div>
-                <div className="">
-                  <img className="mt-1 " src={EditIcon} alt="logo" />
-                </div>
-              </div>
-              <div className="answer mb-1 ">
-                <div className="mt-1">
-                  <img
-                    className=" "
-                    src={ChatBotLogo}
-                    alt="logo"
-                    style={{
-                      height: "25px",
-                      width: "25px",
-                      borderRadius: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-                <div className="response input ">
-                  {/* {m.q} */}
-                  {!loading && m.q}
-                  {loading && <p>Loading...</p>}
-                
-                </div>
-                <div className="mt-1">
-                  <img className=" " src={CopyIcon} alt="logo" />
-                </div>
-              </div>
-            </div>
-            <div className="footer">
-              <form className="input-div " onSubmit={handleSubmit}>
-              
-                <label htmlFor="upload">
-                  <img
-                    className="img1"
-                    src={UploadIcon}
-                    alt=""
-                    style={{ color: "white" }}
-                  />
-                </label>
-                <input
-                  id="upload"
-                  type="file"
-                  ref={fileRef}
-                  style={{ display: "none", visibility: "hidden" }}
-                />
+                <div className="footer">
+                  <form className="input-div " onSubmit={handleSubmit}>
+                  
+                    <label htmlFor="upload">
+                      <img
+                        className="img1"
+                        src={UploadIcon}
+                        alt=""
+                        style={{ color: "white" }}
+                      />
+                    </label>
+                    <input
+                      id="upload"
+                      type="file"
+                      ref={fileRef}
+                      style={{ display: "none", visibility: "hidden" }}
+                    />
 
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Send a message"
-                  ref={promptRef}
-                />
-                
-                <label htmlFor="submit">
-                  <img className="img1" src={SendIcon} alt="" />
-                </label>
-                <input
-                  className="input"
-                  type="submit"
-                  id="submit"
-                  // onClick={handleClick}
-                  style={{ display: "none", visibility: "hidden" }}
-                />
-               
-              </form>
-            </div>
-          </div>
-        ))
+                    <input
+                      className="input"
+                      type="text"
+                      placeholder="Send a message"
+                      ref={promptRef}
+                    />
+                    
+                    <label htmlFor="submit">
+                      <img className="img1" src={SendIcon} alt="" />
+                    </label>
+                    <input
+                      className="input"
+                      type="submit"
+                      id="submit"
+                      // onClick={handleClick}
+                      style={{ display: "none", visibility: "hidden" }}
+                    />
+                  
+                  </form>
+                </div>
+              </div>
+            )
+        // </div>
+      
       )}
     </>
   );

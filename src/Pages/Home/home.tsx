@@ -5,6 +5,8 @@ import Footer from "../../Components/Footer/footer";
 import InitialMessage from "../../Components/MiddleContent/initialMsg";
 import MidContent from "../../Components/MiddleContent/midContent";
 import SideBar from "../../Components/SideBar/sideBar";
+import Test from "../../Components/test";
+import Upload from "../../Components/MiddleContent/upload";
 
 interface Item {
   p: string;
@@ -29,16 +31,13 @@ const Home = () => {
           </div>
           <div className="middle ">
             {/* <InitialMessage/> */}
-            <MidContent arr={arr} setArr={setArr} />
-
-            {/* {arr.length===0 ?<InitialMessage/>:<MidContent/>} */}
+            {/* <MidContent arr={arr} setArr={setArr} /> */}
+            <Upload/>
           </div>
-          {/* <div className="footer">
-            <Footer/>
-          </div> */}
+          
         </div>
       </div>
-      {/* {response && (<Footer setResponse={setResponse}/>)} */}
+
     </>
   );
 };
