@@ -7,7 +7,6 @@ import MidContent from "../../Components/MiddleContent/midContent";
 import SideBar from "../../Components/SideBar/sideBar";
 import Test from "../../Components/test";
 import AddNewFile from "../../Components/UploadData/addFile";
-import Upload from "../../Components/UploadData/upload";
 
 interface Item {
   p: string;
@@ -32,8 +31,9 @@ const Home = () => {
           </div>
           <div className="middle ">
             {/* <InitialMessage/> */}
-            <MidContent arr={arr} setArr={setArr} />
-            {/* <Upload/> */}
+            {/* <MidContent arr={arr} setArr={setArr} /> */}
+            {/* <Upload /> */}
+            <AddNewFile />
           </div>
         </div>
       </div>
