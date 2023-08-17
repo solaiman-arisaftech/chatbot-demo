@@ -31,13 +31,11 @@ const Home = () => {
           </div>
           <div className="middle ">
             {/* <InitialMessage/> */}
-            {/* <MidContent arr={arr} setArr={setArr} /> */}
-            <Upload/>
+            <MidContent arr={arr} setArr={setArr} />
+            {/* <Upload/> */}
           </div>
-          
         </div>
       </div>
-
     </>
   );
 };
