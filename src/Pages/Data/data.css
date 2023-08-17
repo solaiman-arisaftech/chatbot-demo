@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+.body{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; 
+}
+.main{
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    overflow-x: hidden;
+    background-color: rgba(15, 18, 21, 1);
+}
+.left-sider{
+    width: 11.5%;
+    height: 100vh;
+    color: white;
+    background-image: linear-gradient(rgba(19, 26, 32, 1), rgba(38, 74, 88, 1), rgba(19, 26, 32, 1));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    overflow: hidden;
+}
+
+.right-sider{
+    max-width:100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+.navbar{
+    width: 100%;
+    height: 8%;
+    color: white;
+    background-color: rgba(19, 26, 32, 1);
+    position: fixed;
+    top: 0%;
+    display: flex;
+    left: 11.5%;
+}
+.middle{
+    width: 100vw;
+    color: white;
+    background-color: rgba(15, 18, 21, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 10%;
+    margin-bottom: 5vh;
+    padding-block: 120px;
+    margin-left: 11.5%;
+    overflow-y: scroll; 
+}
+
+.footer{
+    width: 100%;
+    height: 15%;
+    color: white;
+    background-color: rgba(19, 26, 32, 1);
+    position: fixed;
+    bottom: 0%;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    left: 11.5%;
+}
