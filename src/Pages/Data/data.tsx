@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./home.css";
 import NavBar from "../../Components/NavBar/navBar";
-import MidContent from "../../Components/MiddleContent/midContent";
 import SideBar from "../../Components/SideBar/sideBar";
+import AddNewFile from "../../Components/UploadData/addFile";
+import './data.css'
 
-
-interface Item {
-  p: string;
-  q: string;
-}
-
-const Home = () => {
-  const [arr, setArr] = useState<Item[]>([{ p: "", q: "" }]);
-  useEffect(() => {
-    console.log("from home ", arr);
-  }, [arr]);
+const Data = () => {
+  
 
   return (
     <>
@@ -27,9 +18,8 @@ const Home = () => {
             <NavBar />
           </div>
           <div className="middle ">
-            <MidContent arr={arr} setArr={setArr} />
+            <AddNewFile/>
           </div>
-          
         </div>
       </div>
 
@@ -37,4 +27,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Data;

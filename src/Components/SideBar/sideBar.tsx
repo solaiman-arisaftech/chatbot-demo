@@ -12,7 +12,7 @@ const SideBar = () => {
    
     <>
          <div className="title  d-flex ">
-            <div className="logo line">Chat Bot</div>  
+            <div className="logo line1">Chat Bot</div>  
             {/* <hr style={{height:"1px", backgroundColor:"rgba(210, 210, 210, 0.3)"}}/>           */}
             <div className="gap ">
               <img src={Faq_Icon} alt="" />
@@ -24,7 +24,7 @@ const SideBar = () => {
             </div>
         </div>
            
-        <div className="left-sidebar-footer">  
+        <div className="left-sidebar-footer line2">  
           <div className="gap">
             <img src={Settings_Icon} alt="" />
             <div className="p-font">Settings</div>

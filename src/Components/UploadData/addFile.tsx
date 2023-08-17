@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import "./upload.css";
 import DataTable from "react-data-table-component";
+import Download_Icon from '../../Image/download_Icon.svg'
+import Close_Icon from '../../Image/Close.svg'
 
 
 const AddNewFile = () => {
@@ -16,67 +18,78 @@ const AddNewFile = () => {
      
         <div className="upload-box  ">
             <div className="title-box ">
-                <div className="">Upload data</div>
+                <div className="font1">Upload data</div>
                 <div><button onClick={toggleModal} className="button ">Add new</button></div>
             </div>
-            <div className="upload mid-scroll">
+            <div className="upload mid-scroll ">
                 <div className="file-box">
-                    <div>file01.pdf</div>
-                    <div>100kb</div>
-                    <div>download</div>
+                    <div className="font2">file01.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
                 </div>
                 <div className="file-box">
-                    <div>file02.pdf</div>
-                    <div>100kb</div>
-                    <div>download</div>
+                    <div className="font2">file02.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
                 </div>
                 <div className="file-box">
-                    <div>file03.pdf</div>
-                    <div>100kb</div>
-                    <div>download</div>
+                    <div className="font2">file03.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
                 </div>
                 <div className="file-box">
-                    <div>file04.pdf</div>
-                    <div>100kb</div>
-                    <div>download</div>
+                    <div className="font2">file04.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
                 </div>
                 <div className="file-box">
-                    <div>file05.pdf</div>
-                    <div>100kb</div>
-                    <div>download</div>
+                    <div className="font2">file05.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
                 </div>
                 <div className="file-box">
-                    <div>file06.pdf</div>
-                    <div>100kb</div>
-                    <div>download</div>
+                    <div className="font2">file06.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
                 </div>
                 <div className="file-box">
-                    <div>file07.pdf</div>
-                    <div>100kb</div>
-                    <div>download</div>
+                    <div className="font2">file07.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
                 </div>
                 <div className="file-box">
-                    <div>file08.pdf</div>
-                    <div>100kb</div>
-                    <div>download</div>
-                </div>  
+                    <div className="font2">file08.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file09.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                
             </div> 
 
             {modal && (
                 <div className="modal">
                 <div onClick={toggleModal} className="overlay"></div>
                 <div className="modal-content ">
-                    <div className="title-box">
-                        <div className="">Upload data</div>
+                    <div className="title-box line">
+                        <div className="font1">Upload data</div>
                     </div>
-                    <hr />
-                    <div className="file-box">
-                        <div>file08.pdf</div>
-                        <div>100kb</div>
-                        <div><button className="" onClick={toggleModal}>CLOSE</button></div>
+                    
+                    <div className="file-box line">
+                        <div className="font2">file08.pdf</div>
+                        <div className="font2">100kb</div>
+                        <div ><img className="close-btn" src={Close_Icon} onClick={toggleModal} alt="" /></div>
                     </div>
-                    <hr />
-                    <div><button className="upload-button ">Upload</button></div>
+                    
+                    <button className="upload-button font2">
+                        <form action="">
+                            <input type="file" style={{display:'none', visibility:'hidden'}} />
+                            Upload 
+                        </form>
+                    </button>
                    
 
 
