@@ -4,6 +4,8 @@ import "./upload.css";
 import DataTable from "react-data-table-component";
 import Download_Icon from '../../Image/download_Icon.svg'
 import Close_Icon from '../../Image/Close.svg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const AddNewFile = () => {
@@ -13,6 +15,15 @@ const AddNewFile = () => {
       setModal(!modal);
     };
 
+    const alertToast = () => {
+            toast.success("File Uploaded Successfully", {
+                position: toast.POSITION.TOP_CENTER,
+                className: 'toast-message'
+            })
+            
+            
+    }
+
 
   return (
      
@@ -21,7 +32,7 @@ const AddNewFile = () => {
                 <div className="font1">Upload data</div>
                 <div><button onClick={toggleModal} className="button ">Add new</button></div>
             </div>
-            <div className="upload mid-scroll ">
+            <div className="upload mid-scroll hide-scrollbar ">
                 <div className="file-box">
                     <div className="font2">file01.pdf</div>
                     <div className="font2">100kb</div>
@@ -84,16 +95,13 @@ const AddNewFile = () => {
                         <div ><img className="close-btn" src={Close_Icon} onClick={toggleModal} alt="" /></div>
                     </div>
                     
-                    <button className="upload-button font2">
+                    <button className="upload-button font2" onClick={alertToast}>
                         <form action="">
                             <input type="file" style={{display:'none', visibility:'hidden'}} />
                             Upload 
                         </form>
                     </button>
-                   
-
-
-                    
+                    <ToastContainer /> 
                 </div>
                 </div>
             )}  

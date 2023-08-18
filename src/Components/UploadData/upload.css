@@ -3,7 +3,15 @@
 
 .mid-scroll{
     overflow-y: scroll;
-    
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .upload-div{
@@ -23,6 +31,8 @@
     gap: 0.1rem;
     overflow: hidden;
     border-radius: 0.3rem;
+    overflow-y: hidden;
+  
 }
 .title-box  {
     display: flex;
@@ -107,8 +117,8 @@
     border-radius: 3px;
     /* max-width: 600px;
     min-width: 300px; */
-    width: 735px;
-    height: 361px;
+    width: 54.5%;
+    height: 55.5%;
 }
 
 .close-modal {
@@ -139,4 +149,9 @@
 .font2{
     font-family: 'Poppins';
     font-size: 12px;
+}
+.toast-message {
+    background-color: rgba(154, 209, 153, 1);
+    color: rgba(34, 72, 33, 1);
+    top:-150px
 }

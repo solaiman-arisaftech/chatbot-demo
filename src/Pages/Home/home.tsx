@@ -3,6 +3,7 @@ import "./home.css";
 import NavBar from "../../Components/NavBar/navBar";
 import MidContent from "../../Components/MiddleContent/midContent";
 import SideBar from "../../Components/SideBar/sideBar";
+import InitialMessage from "../../Components/MiddleContent/initialMsg";
 
 
 interface Item {
@@ -26,7 +27,7 @@ const Home = () => {
           <div className="navbar">
             <NavBar />
           </div>
-          <div className="middle ">
+          <div className="middle-home ">
             <MidContent arr={arr} setArr={setArr} />
           </div>
           

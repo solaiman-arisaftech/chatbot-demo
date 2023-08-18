@@ -5,6 +5,7 @@ import EditIcon from "../../Image/Edit_Icon.svg";
 import ChatBotLogo from "../../Image/ChatBot_Logo.svg";
 import CopyIcon from "../../Image/Copy_Icon.svg";
 import SendIcon from "../../Image/Send_Icon.svg";
+import DisableSendIcon from "../../Image/disableSendIcon.svg";
 import UploadIcon from "../../Image/add.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
@@ -25,17 +26,27 @@ interface MidContentProps {
 const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [clearInput, setClearInput] = useState('')
   const promptRef = useRef<any>(null);
   const fileRef = useRef<any>(null);
   const [flag, setFlag] = useState(false);
-  // const [arr, setArr] = useState<Item[]>([{ p: "", q: "" }]);
+
+  const [inputValue, setInputValue] = useState('');
+
+  
+  const getImageSource = () => {
+    if (inputValue === '' ) {
+      return DisableSendIcon;
+    } else {
+      return  SendIcon; 
+    }
+  };
+
 
   const handleSubmit = async (e: any) => {
     
     e.preventDefault();
     setLoading(true);
-    
+
     console.log(promptRef.current?.value);
     const res = await axios({
       method: "post",
@@ -56,7 +67,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
     console.log(res.data.response);
     
     if (res.data.response) {
-      setFlag(!flag);
+      setFlag(flag);
       const obj = {
         p: promptRef.current?.value,
         q: res.data.response,
@@ -74,9 +85,9 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   useEffect(() => {}, [arr]);
   return (
     <>
-      {arr.length!==0 ? (
+      {arr.length==1 ? (
         <div className="mid-d">
-          <div className="mid-box  ">
+          {/* <div className="mid-box  ">
             <div className="prompt-box ">
               <div className="mt-1">
                 <img
@@ -113,7 +124,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                 />
               </div>
               <div className="input ">
-                {/* {!loading && promptRef ? data : " "} */}
+                {!loading && promptRef ? data : " "}
                 {loading && <p>Loading...</p>}
                 {promptRef ? data : " "}
                 
@@ -121,11 +132,12 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
               <div className="mt-1">
                 <img className=" " src={CopyIcon} alt="logo" />
               </div>
-            </div>
-          </div>
+             </div>
+          </div> */}
+          <InitialMessage/>
           <div className="footer">
             <form className="input-div " onSubmit={handleSubmit}>
-              <label htmlFor="upload">
+              {/* <label htmlFor="upload">
                 <img
                   className="img1"
                   src={UploadIcon}
@@ -138,40 +150,34 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                 type="file"
                 ref={fileRef}
                 style={{ display: "none", visibility: "hidden" }}
-              />
-
+              /> */}
               <input
                 className="input"
                 type="text"
                 placeholder="Send a message"
                 ref={promptRef}
-                // value={clearInput}
-                // onChange={(e)=> setClearInput(e.target.value)}
-
-
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
               />
 
-              <label htmlFor="submit">
-                <img className="img1" src={SendIcon} alt=" "  />
+              <label htmlFor="submit" >
+                <img className="img1" src={getImageSource()} alt=" "  />
+          
               </label>
               <input
                 className="input"
                 type="submit"
                 id="submit"
-                // onClick={handleClick}
+                
                 style={{ display: "none", visibility: "hidden" }}
               />
-              
             </form>
           </div>
         </div>
-        // <div>
-        //         <InitialMessage />
-        // </div>
        
       ) : (
-        // <div className="mid-scroll">
-            arr.map((m: any) => 
+        <div className="mid-scroll">
+          {  arr.map((m: any) => 
               <div>
                 <div className="mid-box  ">
                   <div className="prompt-box ">
@@ -188,7 +194,13 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                         }}
                       />
                     </div>
-                    <div className="input ">{m.p}</div>
+                    <div className="input ">
+                      
+                      {m.p}
+                      {/* {showSubmittedValue &&  m.p} */}
+
+
+                    </div>
                     <div className="">
                       <img className="mt-1 " src={EditIcon} alt="logo" />
                     </div>
@@ -221,7 +233,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                 <div className="footer">
                   <form className="input-div " onSubmit={handleSubmit}>
                   
-                    <label htmlFor="upload">
+                    {/* <label htmlFor="upload">
                       <img
                         className="img1"
                         src={UploadIcon}
@@ -234,31 +246,34 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                       type="file"
                       ref={fileRef}
                       style={{ display: "none", visibility: "hidden" }}
-                    />
+                    /> */}
 
                     <input
                       className="input"
                       type="text"
                       placeholder="Send a message"
                       ref={promptRef}
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
                     />
                     
                     <label htmlFor="submit">
-                      <img className="img1" src={SendIcon} alt="" />
+                      <img className="img1" src={getImageSource()} alt=" "  />
+                   
                     </label>
                     <input
                       className="input"
                       type="submit"
                       id="submit"
-                      // onClick={handleClick}
+                      
                       style={{ display: "none", visibility: "hidden" }}
                     />
                   
                   </form>
                 </div>
               </div>
-            )
-        // </div>
+            )}
+        </div>
       
       )}
     </>

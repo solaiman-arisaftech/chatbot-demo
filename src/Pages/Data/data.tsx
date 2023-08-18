@@ -17,7 +17,7 @@ const Data = () => {
           <div className="navbar">
             <NavBar />
           </div>
-          <div className="middle ">
+          <div className="middle-data ">
             <AddNewFile/>
           </div>
         </div>
