@@ -40,69 +40,21 @@ const AddNewFile = () => {
         </div>
       </div>
       <div className="upload mid-scroll ">
-        <div className="file-box">
-          <div className="font2">file01.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
+        {files.map((m) => (
+          <div className="file-box">
+            <div className="font2">{m.name}</div>
+            <div className="font2">100kb</div>
+            <div>
+              <a
+                style={{ textDecoration: "none" }}
+                href={`data:application/octet-stream;base64,${m.content}`}
+                download={m.name}
+              >
+                <img src={Download_Icon} alt="" />
+              </a>
+            </div>
           </div>
-        </div>
-        <div className="file-box">
-          <div className="font2">file02.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
-          </div>
-        </div>
-        <div className="file-box">
-          <div className="font2">file03.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
-          </div>
-        </div>
-        <div className="file-box">
-          <div className="font2">file04.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
-          </div>
-        </div>
-        <div className="file-box">
-          <div className="font2">file05.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
-          </div>
-        </div>
-        <div className="file-box">
-          <div className="font2">file06.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
-          </div>
-        </div>
-        <div className="file-box">
-          <div className="font2">file07.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
-          </div>
-        </div>
-        <div className="file-box">
-          <div className="font2">file08.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
-          </div>
-        </div>
-        <div className="file-box">
-          <div className="font2">file09.pdf</div>
-          <div className="font2">100kb</div>
-          <div>
-            <img src={Download_Icon} alt="" />
-          </div>
-        </div>
+        ))}
       </div>
 
       {modal && (
