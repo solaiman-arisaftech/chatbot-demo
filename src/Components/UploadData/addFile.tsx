@@ -5,6 +5,8 @@ import DataTable from "react-data-table-component";
 import Download_Icon from "../../Image/download_Icon.svg";
 import Close_Icon from "../../Image/Close.svg";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type fileType = {
   name: string;
@@ -22,76 +24,101 @@ const AddNewFile = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get("http://localhost:8000/all");
-      console.log(res);
+      const res = await axios.get("http://localhost:8000/all")
+      setFiles(res.data)
+    }
+  }) 
 
-      setFiles(res.data);
-    };
-    fetchData();
-  }, []);
+  const alertToast = () => {
+    toast.success("FIle Uploaded Successfully", {
+      position: toast.POSITION.TOP_CENTER,
+      className: "toast-message"
+    })
+  }
+
+
   return (
-    <div className="upload-box  ">
-      <div className="title-box ">
-        <div className="font1">Upload data</div>
-        <div>
-          <button onClick={toggleModal} className="button ">
-            Add new
-          </button>
+     
+        <div className="upload-box  ">
+            <div className="title-box ">
+                <div className="font1">Upload data</div>
+                <div><button onClick={toggleModal} className="button ">Add new</button></div>
+            </div>
+            <div className="upload mid-scroll hide-scrollbar ">
+                <div className="file-box">
+                    <div className="font2">file01.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file02.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file03.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file04.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file05.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file06.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file07.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file08.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                <div className="file-box">
+                    <div className="font2">file09.pdf</div>
+                    <div className="font2">100kb</div>
+                    <div><img src={Download_Icon} alt="" /></div>
+                </div>
+                
+            </div> 
+
+            {modal && (
+                <div className="modal">
+                <div onClick={toggleModal} className="overlay"></div>
+                <div className="modal-content ">
+                    <div className="title-box line">
+                        <div className="font1">Upload data</div>
+                    </div>
+                    
+                    <div className="file-box line">
+                        <div className="font2">file08.pdf</div>
+                        <div className="font2">100kb</div>
+                        <div ><img className="close-btn" src={Close_Icon} onClick={toggleModal} alt="" /></div>
+                    </div>
+                    
+                    <button className="upload-button font2" onClick={alertToast}>
+                        <form action="">
+                            <input type="file" style={{display:'none', visibility:'hidden'}} />
+                            Upload 
+                        </form>
+                    </button>
+                    <ToastContainer /> 
+                </div>
+                </div>
+            )}  
         </div>
-      </div>
-      <div className="upload mid-scroll ">
-        {files.map((m) => (
-          <div className="file-box">
-            <div className="font2">{m.name}</div>
-            <div className="font2">100kb</div>
-            <div>
-              <a
-                style={{ textDecoration: "none" }}
-                href={`data:application/octet-stream;base64,${m.content}`}
-                download={m.name}
-              >
-                <img src={Download_Icon} alt="" />
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content ">
-            <div className="title-box line">
-              <div className="font1">Upload data</div>
-            </div>
-
-            <div className="file-box line">
-              <div className="font2">file08.pdf</div>
-              <div className="font2">100kb</div>
-              <div>
-                <img
-                  className="close-btn"
-                  src={Close_Icon}
-                  onClick={toggleModal}
-                  alt=""
-                />
-              </div>
-            </div>
-
-            <button className="upload-button font2">
-              <form action="">
-                <input
-                  type="file"
-                  style={{ display: "none", visibility: "hidden" }}
-                />
-                Upload
-              </form>
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
+  )};
+     
 
 export default AddNewFile;

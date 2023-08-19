@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     text-align: start;
-    padding: 1rem;
+    padding: 0.5rem;
     font-family: Poppins;
     font-size: 14px;
     font-weight: 400;
@@ -40,13 +40,12 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    padding-left: 1rem;
-    
+    padding-left: 1.5rem;
     padding-block: 0.3rem;
     border-radius: 0.5rem;
     
 }
-.gap:focus{
+.gap:hover{
     background-color: rgba(38, 74, 88, 1);
 }
 .d-flex{

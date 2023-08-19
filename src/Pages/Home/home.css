@@ -10,7 +10,6 @@
     flex-direction: row;
     flex-wrap: nowrap;
     
-    
 }
 .main{
     width: 100vw;
@@ -43,8 +42,6 @@
     flex-direction: column;
     justify-content: center;
     
-   
-    
 }
 .navbar{
     width: 100%;
@@ -59,7 +56,7 @@
     
 
 }
-.middle{
+/* .middle{
     
     width: 100vw;
     color: white;
@@ -73,8 +70,21 @@
     padding-block: 120px;
     margin-left: 11.5%;
     overflow-y: scroll;
+} */
+.middle-home{
     
-    
+    width: 100vw;
+    color: white;
+    background-color: rgba(15, 18, 21, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 8vh;
+    margin-bottom: 15vh;
+    /* padding-block: 100px; */
+    margin-left: 11.5%;
+    overflow-y: hidden;
    
 }
 
