@@ -1,157 +1,146 @@
-
 /* <!--Upload Content--> */
 
-.mid-scroll{
-    overflow-y: scroll;
+.mid-scroll {
+  overflow-y: scroll;
 }
 .hide-scrollbar::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.upload-div{
-
-    height: 700px;
-    display: inline;
-
+.upload-div {
+  height: 700px;
+  display: inline;
 }
-.upload-box{
-   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 18%;
-    margin-right: 27.5%;
-    margin-top: -120px;
-    background-color:  rgba(15, 18, 21, 1);
-    gap: 0.1rem;
-    overflow: hidden;
-    border-radius: 0.3rem;
-    overflow-y: hidden;
-  
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 18%;
+  margin-right: 27.5%;
+  margin-top: -120px;
+  background-color: rgba(15, 18, 21, 1);
+  gap: 0.1rem;
+  overflow: hidden;
+  border-radius: 0.3rem;
+  overflow-y: hidden;
 }
-.title-box  {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: rgba(19, 26, 32, 1);
-    padding: 1rem; 
-      
-  
+.title-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(19, 26, 32, 1);
+  padding: 1rem;
 }
-.file-box  {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(19, 26, 32, 1);
-    padding-block: 0.7rem;
-    padding-inline: 2rem;
-       
+.file-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(19, 26, 32, 1);
+  padding-block: 0.7rem;
+  padding-inline: 2rem;
 }
 
 .upload {
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color:  rgba(15, 18, 21, 1);
-    gap: 0.1rem;
-   
-   
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(15, 18, 21, 1);
+  gap: 0.1rem;
 }
 .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .button{
-    padding-block: 0.2rem;
-    padding-inline: 0.5rem;
-    background-color: rgba(38, 74, 88, 1);
-    border: none;
-    border-radius: 0.2rem;
-    color: white;
-    
-  }
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.button {
+  padding-block: 0.2rem;
+  padding-inline: 0.5rem;
+  background-color: rgba(38, 74, 88, 1);
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
+}
 
-  /* Upload Modal */
-  body.active-modal {
-    overflow-y: hidden;
+/* Upload Modal */
+body.active-modal {
+  overflow-y: hidden;
 }
 
 .btn-modal {
-    padding: 10px 20px;
-    display: block;
-    margin: 100px auto 0;
-    font-size: 18px;
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
 }
 
-.modal, .overlay {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
 }
 
 .overlay {
-    background:  rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 .modal-content {
-    position: absolute;
-    top: 49%;
-    left: 56.3%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background:rgba(19, 26, 32, 1);
-    
-    border-radius: 3px;
-    /* max-width: 600px;
+  position: absolute;
+  top: 49%;
+  left: 56.3%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: rgba(19, 26, 32, 1);
+
+  border-radius: 3px;
+  /* max-width: 600px;
     min-width: 300px; */
-    width: 54.5%;
-    height: 55.5%;
+  width: 54.5%;
+  height: 55.5%;
 }
 
 .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 7px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
 }
-.upload-button{
-    margin-top: 5%;
-    padding-block: 0.5rem;
-    padding-inline: 4rem;
-    background-color: rgba(38, 74, 88, 1);
-    border: none;
-    border-radius: 0.2rem;
-    color: white;
+.upload-button {
+  margin-top: 5%;
+  padding-block: 0.5rem;
+  padding-inline: 4rem;
+  background-color: rgba(38, 74, 88, 1);
+  border: none;
+  border-radius: 0.2rem;
+  color: white;
 }
-.close-btn:hover{
-    background-image: red;
+.close-btn:hover {
+  background-image: red;
 }
-.line{
-    border-bottom: 0.2px solid rgba(15, 18, 21, 1);
+.line {
+  border-bottom: 0.2px solid rgba(15, 18, 21, 1);
 }
-.font1{
-    font-family: 'Poppins';
-    font-size: 14px;
+.font1 {
+  font-family: "Poppins";
+  font-size: 14px;
 }
-.font2{
-    font-family: 'Poppins';
-    font-size: 12px;
+.font2 {
+  font-family: "Poppins";
+  font-size: 12px;
 }
 .toast-message {
-    background-color: rgba(154, 209, 153, 1);
-    color: rgba(34, 72, 33, 1);
-    top:-150px
+  background-color: rgba(154, 209, 153, 1);
+  color: rgba(34, 72, 33, 1);
+  top: -150px;
 }

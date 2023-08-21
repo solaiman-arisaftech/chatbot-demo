@@ -30,22 +30,22 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   const fileRef = useRef<any>(null);
   const [flag, setFlag] = useState(false);
 
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
+  const scrollContRef = useRef<any>(null);
 
-  
   const getImageSource = () => {
-    if (inputValue === '' ) {
+    if (inputValue === "") {
       return DisableSendIcon;
     } else {
-      return  SendIcon; 
+      return SendIcon;
     }
   };
 
-
   const handleSubmit = async (e: any) => {
-    
     e.preventDefault();
     setLoading(true);
+    setInputValue(promptRef.current?.value);
+    console.log(promptRef.current?.value);
 
     console.log(promptRef.current?.value);
     const res = await axios({
@@ -61,11 +61,13 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
         file: fileRef.current?.value,
       },
     });
-    
-    // const obj = {answer: res.data}
+
+    if (scrollContRef.current) {
+      scrollContRef.current.scrollTop = scrollContRef.current.scrollHeight;
+    }
     setData(res.data.response);
     console.log(res.data.response);
-    
+
     if (res.data.response) {
       setFlag(flag);
       const obj = {
@@ -76,81 +78,16 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
       setArr(updatedArr);
     }
     setLoading(false);
-    
-    
-
- 
-
+    setInputValue("");
   };
-  useEffect(() => {}, [arr]);
+
   return (
     <>
-      {arr.length==1 ? (
+      {arr.length == 1 ? (
         <div className="mid-d">
-          {/* <div className="mid-box  ">
-            <div className="prompt-box ">
-              <div className="mt-1">
-                <img
-                  className=" "
-                  src={ProfileIcon}
-                  alt="logo"
-                  style={{
-                    height: "25px",
-                    width: "25px",
-                    borderRadius: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-              <div className="input ">
-                {promptRef.current ? promptRef.current?.value : ""}
-              </div>
-              <div className="">
-                <img className="mt-1 " src={EditIcon} alt="logo" />
-              </div>
-            </div>
-            <div className="answer mb-1 ">
-              <div className="mt-1">
-                <img
-                  className=" "
-                  src={ChatBotLogo}
-                  alt="logo"
-                  style={{
-                    height: "25px",
-                    width: "25px",
-                    borderRadius: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-              <div className="input ">
-                {!loading && promptRef ? data : " "}
-                {loading && <p>Loading...</p>}
-                {promptRef ? data : " "}
-                
-                </div>
-              <div className="mt-1">
-                <img className=" " src={CopyIcon} alt="logo" />
-              </div>
-             </div>
-          </div> */}
-          <InitialMessage/>
+          <InitialMessage />
           <div className="footer">
             <form className="input-div " onSubmit={handleSubmit}>
-              {/* <label htmlFor="upload">
-                <img
-                  className="img1"
-                  src={UploadIcon}
-                  alt=""
-                  style={{ color: "white" }}
-                />
-              </label>
-              <input
-                id="upload"
-                type="file"
-                ref={fileRef}
-                style={{ display: "none", visibility: "hidden" }}
-              /> */}
               <input
                 className="input"
                 type="text"
@@ -160,121 +97,90 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                 onChange={(e) => setInputValue(e.target.value)}
               />
 
-              <label htmlFor="submit" >
-                <img className="img1" src={getImageSource()} alt=" "  />
-          
+              <label htmlFor="submit">
+                <img className="img1" src={getImageSource()} alt=" " />
               </label>
               <input
                 className="input"
                 type="submit"
                 id="submit"
-                
                 style={{ display: "none", visibility: "hidden" }}
               />
             </form>
           </div>
         </div>
-       
       ) : (
-        <div className="mid-scroll">
-          {  arr.map((m: any) => 
-              <div>
-                <div className="mid-box  ">
-                  <div className="prompt-box ">
-                    <div className="mt-1">
-                      <img
-                        className=" "
-                        src={ProfileIcon}
-                        alt="logo"
-                        style={{
-                          height: "25px",
-                          width: "25px",
-                          borderRadius: "100%",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </div>
-                    <div className="input ">
-                      
-                      {m.p}
-                      {/* {showSubmittedValue &&  m.p} */}
-
-
-                    </div>
-                    <div className="">
-                      <img className="mt-1 " src={EditIcon} alt="logo" />
-                    </div>
+        <div className="mid-scroll" ref={scrollContRef}>
+          {arr.map((m: any, index: number) => (
+            <div style={{ display: index == 0 ? "none" : "hidden" }}>
+              <div className="mid-box">
+                <div className="prompt-box ">
+                  <div className="mt-1">
+                    <img
+                      className=" "
+                      src={ProfileIcon}
+                      alt="logo"
+                      style={{
+                        height: "25px",
+                        width: "25px",
+                        borderRadius: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
                   </div>
-                  <div className="answer mb-1 ">
-                    <div className="mt-1">
-                      <img
-                        className=" "
-                        src={ChatBotLogo}
-                        alt="logo"
-                        style={{
-                          height: "25px",
-                          width: "25px",
-                          borderRadius: "100%",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </div>
-                    <div className="response input ">
-                      {/* {m.q} */}
-                      {!loading && m.q}
-                      {loading && <p>Loading...</p>}
-                    
-                    </div>
-                    <div className="mt-1">
-                      <img className=" " src={CopyIcon} alt="logo" />
-                    </div>
+                  <div className="input ">{m.p}</div>
+                  <div className="">
+                    <img className="mt-1 " src={EditIcon} alt="logo" />
                   </div>
                 </div>
-                <div className="footer">
-                  <form className="input-div " onSubmit={handleSubmit}>
-                  
-                    {/* <label htmlFor="upload">
-                      <img
-                        className="img1"
-                        src={UploadIcon}
-                        alt=""
-                        style={{ color: "white" }}
-                      />
-                    </label>
-                    <input
-                      id="upload"
-                      type="file"
-                      ref={fileRef}
-                      style={{ display: "none", visibility: "hidden" }}
-                    /> */}
-
-                    <input
-                      className="input"
-                      type="text"
-                      placeholder="Send a message"
-                      ref={promptRef}
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
+                <div className="answer mb-1 ">
+                  <div className="mt-1">
+                    <img
+                      className=" "
+                      src={ChatBotLogo}
+                      alt="logo"
+                      style={{
+                        height: "25px",
+                        width: "25px",
+                        borderRadius: "100%",
+                        objectFit: "cover",
+                      }}
                     />
-                    
-                    <label htmlFor="submit">
-                      <img className="img1" src={getImageSource()} alt=" "  />
-                   
-                    </label>
-                    <input
-                      className="input"
-                      type="submit"
-                      id="submit"
-                      
-                      style={{ display: "none", visibility: "hidden" }}
-                    />
-                  
-                  </form>
+                  </div>
+                  <div className="response input ">
+                    {!loading && m.q}
+                    {/* {loading && <p>Loading...</p>} */}
+                  </div>
+                  <div className="mt-1">
+                    <img className=" " src={CopyIcon} alt="logo" />
+                  </div>
                 </div>
               </div>
-            )}
+              <div className="footer">
+                <form className="input-div " onSubmit={handleSubmit}>
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Send a message"
+                    ref={promptRef}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                  />
+
+                  <label htmlFor="submit">
+                    <img className="img1" src={getImageSource()} alt=" " />
+                  </label>
+                  <input
+                    className="input"
+                    type="submit"
+                    id="submit"
+                    style={{ display: "none", visibility: "hidden" }}
+                  />
+                </form>
+              </div>
+            </div>
+          ))}
         </div>
-      
       )}
     </>
   );

@@ -5,7 +5,6 @@ import MidContent from "../../Components/MiddleContent/midContent";
 import SideBar from "../../Components/SideBar/sideBar";
 import InitialMessage from "../../Components/MiddleContent/initialMsg";
 
-
 interface Item {
   p: string;
   q: string;
@@ -13,9 +12,8 @@ interface Item {
 
 const Home = () => {
   const [arr, setArr] = useState<Item[]>([{ p: "", q: "" }]);
-  useEffect(() => {
-    console.log("from home ", arr);
-  }, [arr]);
+  // useEffect(() => {
+  // }, [arr]);
 
   return (
     <>
@@ -30,10 +28,8 @@ const Home = () => {
           <div className="middle-home ">
             <MidContent arr={arr} setArr={setArr} />
           </div>
-          
         </div>
       </div>
-
     </>
   );
 };
