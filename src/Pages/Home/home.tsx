@@ -12,9 +12,8 @@ interface Item {
 
 const Home = () => {
   const [arr, setArr] = useState<Item[]>([{ p: "", q: "" }]);
-  useEffect(() => {
-    console.log("from home ", arr);
-  }, [arr]);
+  // useEffect(() => {
+  // }, [arr]);
 
   return (
     <>

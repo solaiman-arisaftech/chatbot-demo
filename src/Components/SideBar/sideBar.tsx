@@ -22,21 +22,18 @@ const SideBar = () => {
         {/* <hr style={{height:"1px", backgroundColor:"rgba(210, 210, 210, 0.3)"}}/>           */}
         <div className="gap " onClick={() => navigate("/")}>
           <img src={Faq_Icon} alt="" />
-          <div className="p-font">Chat</div>
+          <div className="p-font" style={{ cursor: "pointer" }}>
+            Chat
+          </div>
         </div>
-        <div className="gap  " onClick={() => navigate("data")}>
+        <div className="gap  " onClick={() => navigate("/data")}>
           <img src={Upgrade_Icon} alt="" />
-          <div className="p-font">Data</div>
-        </div>
-      </div>
-      <div className="gap ">
-        <img src={Upgrade_Icon} alt="" />
-        <div className="p-font">
-          <Link style={{ textDecoration: "none", color: "white" }} to="/data">
+          <div className="p-font" style={{ cursor: "pointer" }}>
             Data
-          </Link>
+          </div>
         </div>
       </div>
+
       {/* </div> */}
 
       <div className="left-sidebar-footer line2">
