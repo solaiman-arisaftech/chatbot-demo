@@ -47,30 +47,30 @@ const AddNewFile = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
-    console.log("check ", e.target.files[0].name);
     setName(e.target.files[0].name);
+    // setModal(true);
+    if (!modal) {
+      try {
+        const res = await axios.post(
+          // "http://localhost:8000/uploadfile",
+          "http://5.189.160.223:8054/uploadfile",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
-    try {
-      const res = await axios.post(
-        // "http://localhost:8000/uploadfile",
-        "http://5.189.160.223:8054/uploadfile",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      console.log("File uploaded successfully:", res.data);
-      alert("File uploaded successfully:");
-    } catch (error) {
-      console.error("Error uploading file:", error);
+        console.log("File uploaded successfully:", res.data);
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
     }
   };
-
   return (
     <div className="upload-box  ">
+      <ToastContainer />
       <div className="title-box ">
         <div className="font1">Upload data</div>
         <div>
@@ -88,16 +88,27 @@ const AddNewFile = () => {
       </div>
       <div className="upload mid-scroll">
         {files.map((m) => (
-          <div className="file-box">
-            <div className="font2">{m.name}</div>
-            <div className="font2">100kb</div>
-            <div>
-              <a
-                style={{ textDecoration: "none" }}
-                href={`data:application/octet-stream;base64,${m.content}`}
-                download={m.name}
-              ></a>
-              <img src={Download_Icon} alt="" />
+          <div className="file-box" style={{ width: "100%" }}>
+            <div className="font2" style={{ width: "50%" }}>
+              {m.name}
+            </div>
+            <div
+              style={{
+                width: "50%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <div className="font2">100kb</div>
+              <div>
+                <a
+                  style={{ textDecoration: "none" }}
+                  href={`data:application/octet-stream;base64,${m.content}`}
+                  download={m.name}
+                ></a>
+                <img src={Download_Icon} alt="" />
+              </div>
             </div>
           </div>
         ))}
@@ -124,17 +135,15 @@ const AddNewFile = () => {
               </div>
             </div>
 
-            <button
-              className="upload-button font2"
-              onClick={alertToast}
-              type="submit"
-            >
-              <input
-                type="file"
-                style={{ display: "none", visibility: "hidden" }}
-              />
-              Upload
-            </button>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                className="upload-button font2"
+                onClick={alertToast}
+                type="submit"
+              >
+                Upload
+              </button>
+            </div>
             <ToastContainer />
           </div>
         </div>
