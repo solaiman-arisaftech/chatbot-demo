@@ -142,5 +142,5 @@ body.active-modal {
 .toast-message {
   background-color: rgba(154, 209, 153, 1);
   color: rgba(34, 72, 33, 1);
-  top: -150px;
+  top: 40px;
 }
