@@ -1,15 +1,23 @@
 
-
-
+@import url(https://db.onlinewebfonts.com/c/b6e1e126bc19c3e9fe26136203746a13?family=Kefa-Regular);
+@font-face {
+    font-family: "Kefa-Regular";
+    src: url("https://db.onlinewebfonts.com/t/b6e1e126bc19c3e9fe26136203746a13.eot");
+    src: url("https://db.onlinewebfonts.com/t/b6e1e126bc19c3e9fe26136203746a13.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/b6e1e126bc19c3e9fe26136203746a13.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/b6e1e126bc19c3e9fe26136203746a13.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/b6e1e126bc19c3e9fe26136203746a13.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/b6e1e126bc19c3e9fe26136203746a13.svg#Kefa-Regular")format("svg");
+}
 .title{
     padding: 0.5rem;
     
 
 }
 .logo{
-    font-family: 'kefa';
+    font-family: 'Kefa-Regular';
     font-weight: 400;
-    font-size: 28px;
+    font-size: 40px;
     margin-top: 10px;
     padding-bottom: 1rem;
 }
@@ -29,9 +37,9 @@
 }
 .p-font{
     font-family: "Poppins";
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 21px;
+    line-height: 24px;
     display: flex;
     
     

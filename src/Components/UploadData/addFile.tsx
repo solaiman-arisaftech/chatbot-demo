@@ -86,19 +86,25 @@ const AddNewFile = () => {
           </label>
         </div>
       </div>
-      <div className="upload mid-scroll">
+      <div className="upload mid-scroll hide-scrollbar">
         {files.map((m) => (
-          <div className="file-box">
-            <div className="font2">{m.name}</div>
-            <div className="font2">100kb</div>
-            <div>
-              <a
-                style={{ textDecoration: "none" }}
-                href={`data:application/octet-stream;base64,${m.content}`}
-                download={m.name}
-              ></a>
-              <img src={Download_Icon} alt="" />
+          <div className="file-box" style={{width:"100%"}}>
+            <div className="font2" style={{width:"50%"}}>{m.name}</div>
+            <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between", width:"50%"}}>
+                <div className="font2">100kb</div>
+                <div>
+                    <a
+                        style={{ textDecoration: "none" }}
+                        href={`data:application/octet-stream;base64,${m.content}`}
+                        download={m.name}
+                    ></a>
+                    <img src={Download_Icon} alt="" />
+                </div>
             </div>
+                
+
+         
+            
           </div>
         ))}
       </div>

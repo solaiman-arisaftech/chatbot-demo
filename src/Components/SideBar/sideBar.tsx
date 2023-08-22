@@ -18,7 +18,7 @@ const SideBar = () => {
   return (
     <>
       <div className="title  d-flex ">
-        <div className="logo line1">Chat Bot</div>
+        <div className="logo line1">ChatBot</div>
         {/* <hr style={{height:"1px", backgroundColor:"rgba(210, 210, 210, 0.3)"}}/>           */}
         <div className="gap " onClick={() => navigate("/")}>
           <img src={Faq_Icon} alt="" />
