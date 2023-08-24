@@ -139,8 +139,15 @@ body.active-modal {
   font-family: "Poppins";
   font-size: 12px;
 }
-.toast-message {
-  background-color: rgba(154, 209, 153, 1);
-  color: rgba(34, 72, 33, 1);
-  top: 40px;
+.toast-message-success  {
+  background-color: rgba(154, 209, 153, 1) !important;
+  color: rgba(34, 72, 33, 1) !important;
+  /* top: 40px; */
+  left: 30%;
+}
+.toast-message-failed {
+  background-color: rgba(239, 171, 171,1) !important;
+  color: rgba(248, 4, 4,1) !important;
+  /* top: 40px; */
+  left: 30%;
 }

@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'poppins';
 }
 .body{
     width: 100%;
@@ -16,10 +16,8 @@
     height: 100%;
     display: flex;
     overflow-x: hidden;
-
     background-color: rgba(15, 18, 21, 1);
     
-
 }
 .left-sider{
     width: 11.5%;

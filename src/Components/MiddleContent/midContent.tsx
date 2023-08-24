@@ -12,7 +12,8 @@ import axios from "axios";
 import Footer from "../Footer/footer";
 import { log } from "console";
 import InitialMessage from "./initialMsg";
-import { Loading } from "react-loading-dot";
+// import { Loading } from "react-loading-dot";
+import Loading from "../Loading/loading";
 
 interface Item {
   p: string;
@@ -152,10 +153,10 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                     {!loading && m.q}
                     {loading && (
                       <Loading
-                        dots={4}
-                        size="10px"
-                        margin="0"
-                        background="rgba(59, 111, 131, 1)"
+                        // dots={4}
+                        // size="10px"
+                        // margin="0"
+                        // background="rgba(59, 111, 131, 1)"
                       />
                       // <div>"Loading"</div>
                     )}
