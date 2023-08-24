@@ -31,6 +31,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   const promptRef = useRef<any>(null);
   const fileRef = useRef<any>(null);
   const [flag, setFlag] = useState(false);
+  const [len, setLen] = useState(0);
 
   const [inputValue, setInputValue] = useState("");
   const scrollContRef = useRef<any>(null);
@@ -45,6 +46,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     setLoading(true);
     setInputValue(promptRef.current?.value);
     console.log(promptRef.current?.value);
@@ -78,6 +80,8 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
       };
       const updatedArr = [...arr, obj];
       setArr(updatedArr);
+      setLen(arr.length);
+      console.log("Length: ", arr.length);
     }
     setLoading(false);
     setInputValue("");
@@ -149,18 +153,13 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                       }}
                     />
                   </div>
-                  <div className="response input ">
-                    {!loading && m.q}
-                    {loading && (
-                      <Loading
-                        // dots={4}
-                        // size="10px"
-                        // margin="0"
-                        // background="rgba(59, 111, 131, 1)"
-                      />
-                      // <div>"Loading"</div>
-                    )}
-                  </div>
+                  {len === index ? (
+                    <div className="response input">
+                      {!loading ? m.q : <Loading />}
+                    </div>
+                  ) : (
+                    <div className="response input">{m.q}</div>
+                  )}
                   <div className="mt-1">
                     <img className=" " src={CopyIcon} alt="logo" />
                   </div>

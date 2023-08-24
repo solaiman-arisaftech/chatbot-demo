@@ -114,10 +114,6 @@ const AddNewFile = () => {
                 <img src={Download_Icon} alt="" />
               </div>
             </div>
-                
-
-         
-            
           </div>
         ))}
       </div>
