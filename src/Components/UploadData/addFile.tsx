@@ -35,11 +35,14 @@ const AddNewFile = () => {
 
   const alertToast = () => {
     console.log("inside alert toast");
-
-    toast.success("FIle Uploaded Successfully", {
+    toast.success("File Uploaded Successfully", {
       position: toast.POSITION.TOP_CENTER,
-      className: "toast-message",
+      className: "toast-message-success",
     });
+    // toast.error("File Upload Unsuccessful", {
+    //   position: toast.POSITION.TOP_CENTER,
+    //   className: "toast-message-failed",
+    // });
     setModal(false);
   };
   const handleSubmit = async (e: any) => {

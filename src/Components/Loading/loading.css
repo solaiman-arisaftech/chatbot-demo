@@ -1,0 +1,35 @@
+.loader {
+    text-align: start;
+    display: flex;
+    gap: 0.2rem;  
+    margin-top: 1.5%;  
+}
+.loader span {
+    display: inline-block;
+    vertical-align: start;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    animation: loader 0.9s infinite alternate;
+}
+.loader span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+.loader span:nth-of-type(3) {
+    animation-delay: 0.4s;
+}
+.loader span:nth-of-type(4) {
+    animation-delay: 0.4s;
+}
+@keyframes loader {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+  100% {
+    width: 10px;
+    height: 10px;
+    opacity: 0.3;
+  }
+}
