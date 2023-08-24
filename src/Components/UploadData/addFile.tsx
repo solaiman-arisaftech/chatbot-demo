@@ -53,7 +53,8 @@ const AddNewFile = () => {
       try {
         const res = await axios.post(
           // "http://localhost:8000/uploadfile",
-          "http://5.189.160.223:8054/uploadfile",
+          // "http://5.189.160.223:8054/uploadfile",
+          "http://5.189.160.223:8054/upload",
           formData,
           {
             headers: {
@@ -86,7 +87,7 @@ const AddNewFile = () => {
           </label>
         </div>
       </div>
-      <div className="upload mid-scroll">
+      <div className="upload mid-scroll hide-scrollbar">
         {files.map((m) => (
           <div className="file-box" style={{ width: "100%" }}>
             <div className="font2" style={{ width: "50%" }}>
