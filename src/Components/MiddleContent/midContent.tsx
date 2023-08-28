@@ -50,7 +50,6 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
     setLoading(true);
     setInputValue(promptRef.current?.value);
     console.log(promptRef.current?.value);
-
     console.log(promptRef.current?.value);
     const res = await axios({
       method: "post",

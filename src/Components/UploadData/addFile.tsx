@@ -18,60 +18,53 @@ const AddNewFile = () => {
   const [modal, setModal] = useState(false);
   const [files, setFiles] = useState<fileType[]>([]);
   const [name, setName] = useState("");
-
+  const [data, setData] = useState({});
+  const [rend, setRend] = useState(false);
   const toggleModal = () => {
     setModal(!modal);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      // const res = await axios.get("http://localhost:8000/all");
       const res = await axios.get("http://5.189.160.223:8054/all");
       setFiles(res.data);
       console.log(res.data);
     };
     fetchData();
-  }, []);
+  }, [rend]);
 
-  const alertToast = () => {
-    console.log("inside alert toast");
-    toast.success("File Uploaded Successfully", {
-      position: toast.POSITION.TOP_CENTER,
-      className: "toast-message-success",
-    });
-    // toast.error("File Upload Unsuccessful", {
-    //   position: toast.POSITION.TOP_CENTER,
-    //   className: "toast-message-failed",
-    // });
+  const handleToast = async () => {
     setModal(false);
+    try {
+      const res = await axios.post("http://5.189.160.223:8054/upload", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      if (res.data) {
+        setRend(!rend);
+        console.log("File uploaded successfully:", res.data);
+        toast.success("File Uploaded Successfully", {
+          position: toast.POSITION.TOP_CENTER,
+          className: "toast-message-success",
+        });
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
   };
+
   const handleSubmit = async (e: any) => {
-    setModal(true);
     e.preventDefault();
+    setModal(true);
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
     setName(e.target.files[0].name);
     // setModal(true);
-    if (!modal) {
-      try {
-        const res = await axios.post(
-          // "http://localhost:8000/uploadfile",
-          // "http://5.189.160.223:8054/uploadfile",
-          "http://5.189.160.223:8054/upload",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        console.log("File uploaded successfully:", res.data);
-      } catch (error) {
-        console.error("Error uploading file:", error);
-      }
-    }
+    setData(formData);
   };
+
   return (
     <div className="upload-box  ">
       <ToastContainer />
@@ -142,7 +135,7 @@ const AddNewFile = () => {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button
                 className="upload-button font2"
-                onClick={alertToast}
+                onClick={handleToast}
                 type="submit"
               >
                 Upload
