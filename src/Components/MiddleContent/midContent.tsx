@@ -12,7 +12,6 @@ import axios from "axios";
 import Footer from "../Footer/footer";
 import { log } from "console";
 import InitialMessage from "./initialMsg";
-// import { Loading } from "react-loading-dot";
 import Loading from "../Loading/loading";
 
 interface Item {
@@ -28,11 +27,13 @@ interface MidContentProps {
 const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState("");
   const promptRef = useRef<any>(null);
   const fileRef = useRef<any>(null);
   const [flag, setFlag] = useState(false);
   const [len, setLen] = useState(0);
-
+  let tempArr = [];
+  let tokLen = 0;
   const [inputValue, setInputValue] = useState("");
   const scrollContRef = useRef<any>(null);
 
@@ -46,7 +47,6 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
     setLoading(true);
     setInputValue(promptRef.current?.value);
     console.log(promptRef.current?.value);
@@ -60,11 +60,29 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
       },
       url: "http://5.189.160.223:8054/chat",
       data: {
+        token: token,
         query: promptRef.current?.value,
-        file: fileRef.current?.value,
       },
     });
+    setToken(res.data.response);
 
+    tempArr = token.split(" ");
+    tokLen += tempArr.length;
+
+    if (tokLen > 100) {
+      for (let i = 0; i < arr.length; i++) {
+        const temp = arr[i].q.split(" ");
+        tokLen -= temp.length;
+        const newTok = token.replace(arr[i].q, "");
+
+        setToken(newTok);
+        if (tokLen <= 0) {
+          tokLen = 0;
+          setToken("");
+        }
+        if (tokLen <= 100) break;
+      }
+    }
     if (scrollContRef.current) {
       scrollContRef.current.scrollTop = scrollContRef.current.scrollHeight;
     }
