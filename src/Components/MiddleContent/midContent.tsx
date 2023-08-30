@@ -31,7 +31,8 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   let tokLen = 0;
   const [inputValue, setInputValue] = useState("");
   const scrollContRef = useRef<any>(null);
-  let token = "";
+  // let token = "";
+  let [token, setToken] = useState("");
   const getImageSource = () => {
     if (inputValue === "") {
       return DisableSendIcon;
@@ -59,8 +60,8 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
     });
 
     token +=
-      "Query:" + promptRef.current?.value + "Response:" + res.data.response;
-
+      "Query: " + promptRef.current?.value + "Response: " + res.data.response;
+    setToken(token);
     tempArr = token.split(" ");
     tokLen += tempArr.length;
 
@@ -72,9 +73,11 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
         const newTok = token.replace("Response:" + arr[i].q, "");
         const newTok2 = token.replace("Query:" + arr[i].p, "");
         token += newTok + newTok2;
+        setToken(token);
         if (tokLen <= 0) {
           tokLen = 0;
           token = "";
+          setToken(token);
         }
         if (tokLen <= 100) break;
       }
