@@ -6,11 +6,7 @@ import ChatBotLogo from "../../Image/ChatBot_Logo.svg";
 import CopyIcon from "../../Image/Copy_Icon.svg";
 import SendIcon from "../../Image/Send_Icon.svg";
 import DisableSendIcon from "../../Image/disableSendIcon.svg";
-import UploadIcon from "../../Image/add.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import Footer from "../Footer/footer";
-import { log } from "console";
 import InitialMessage from "./initialMsg";
 import Loading from "../Loading/loading";
 
@@ -27,9 +23,7 @@ interface MidContentProps {
 const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
-  const [token, setToken] = useState("");
   const promptRef = useRef<any>(null);
-  const fileRef = useRef<any>(null);
   const [flag, setFlag] = useState(false);
   const [len, setLen] = useState(0);
   const [tempLoad, setTempLoad] = useState(false);
@@ -37,7 +31,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   let tokLen = 0;
   const [inputValue, setInputValue] = useState("");
   const scrollContRef = useRef<any>(null);
-
+  let token = "";
   const getImageSource = () => {
     if (inputValue === "") {
       return DisableSendIcon;
@@ -50,8 +44,6 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
     e.preventDefault();
     setLoading(true);
     setInputValue(promptRef.current?.value);
-    console.log(promptRef.current?.value);
-    console.log(promptRef.current?.value);
     const res = await axios({
       method: "post",
       headers: {
@@ -65,8 +57,9 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
         query: promptRef.current?.value,
       },
     });
-    setToken(res.data.response);
-    console.log("checking ", token);
+
+    token +=
+      "Query:" + promptRef.current?.value + "Response:" + res.data.response;
 
     tempArr = token.split(" ");
     tokLen += tempArr.length;
@@ -74,15 +67,14 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
     if (tokLen > 100) {
       for (let i = 0; i < arr.length; i++) {
         const temp = arr[i].q.split(" ");
-        tokLen -= temp.length;
-        const newTok = token.replace(arr[i].q, "");
-
-        setToken(newTok);
-        console.log("inside conditional ", token);
-
+        const temp2 = arr[i].p.split(" ");
+        tokLen -= temp.length + temp2.length;
+        const newTok = token.replace("Response:" + arr[i].q, "");
+        const newTok2 = token.replace("Query:" + arr[i].p, "");
+        token += newTok + newTok2;
         if (tokLen <= 0) {
           tokLen = 0;
-          setToken("");
+          token = "";
         }
         if (tokLen <= 100) break;
       }
@@ -91,7 +83,6 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
       scrollContRef.current.scrollTop = scrollContRef.current.scrollHeight;
     }
     setData(res.data.response);
-    console.log(res.data.response);
 
     if (res.data.response) {
       setFlag(flag);
@@ -175,11 +166,6 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                       }}
                     />
                   </div>
-                  {/* {len === index ? (
-                    <div className="response input">
-                      {!loading ? m.q : <Loading />}
-                    </div>
-                  ) : ( */}
                   <div className="response input">{m.q}</div>
                   <div className="mt-1">
                     <img className=" " src={CopyIcon} alt="logo" />
@@ -211,9 +197,6 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
               </div>
             </div>
           ))}
-          {/* <div className="answer" style={{ width: "55%", margin: "0 auto" }}>
-            {tempLoad ? <Loading /> : <div></div>}
-          </div> */}
           {!tempLoad ? (
             <div className="mid-box">
               <div className="answer mb-1 ">
@@ -230,13 +213,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                     }}
                   />
                 </div>
-                {/* {len === index ? (
-                    <div className="response input">
-                      {!loading ? m.q : <Loading />}
-                    </div>
-                  ) : ( */}
                 <div className="response input">
-                  {/* {!tempLoad ? <Loading /> : <div></div>} */}
                   <Loading />
                 </div>
                 <div className="mt-1">
