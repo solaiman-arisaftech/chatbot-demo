@@ -32,6 +32,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
   const fileRef = useRef<any>(null);
   const [flag, setFlag] = useState(false);
   const [len, setLen] = useState(0);
+  const [tempLoad, setTempLoad] = useState(false);
   let tempArr = [];
   let tokLen = 0;
   const [inputValue, setInputValue] = useState("");
@@ -65,6 +66,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
       },
     });
     setToken(res.data.response);
+    console.log("checking ", token);
 
     tempArr = token.split(" ");
     tokLen += tempArr.length;
@@ -76,6 +78,8 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
         const newTok = token.replace(arr[i].q, "");
 
         setToken(newTok);
+        console.log("inside conditional ", token);
+
         if (tokLen <= 0) {
           tokLen = 0;
           setToken("");
@@ -91,6 +95,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
 
     if (res.data.response) {
       setFlag(flag);
+      setTempLoad(!tempLoad);
       const obj = {
         p: promptRef.current?.value,
         q: res.data.response,
@@ -170,13 +175,12 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                       }}
                     />
                   </div>
-                  {len === index ? (
+                  {/* {len === index ? (
                     <div className="response input">
                       {!loading ? m.q : <Loading />}
                     </div>
-                  ) : (
-                    <div className="response input">{m.q}</div>
-                  )}
+                  ) : ( */}
+                  <div className="response input">{m.q}</div>
                   <div className="mt-1">
                     <img className=" " src={CopyIcon} alt="logo" />
                   </div>
@@ -201,11 +205,48 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
                     type="submit"
                     id="submit"
                     style={{ display: "none", visibility: "hidden" }}
+                    onClick={(e) => setTempLoad(!tempLoad)}
                   />
                 </form>
               </div>
             </div>
           ))}
+          {/* <div className="answer" style={{ width: "55%", margin: "0 auto" }}>
+            {tempLoad ? <Loading /> : <div></div>}
+          </div> */}
+          {!tempLoad ? (
+            <div className="mid-box">
+              <div className="answer mb-1 ">
+                <div className="mt-1">
+                  <img
+                    className=" "
+                    src={ChatBotLogo}
+                    alt="logo"
+                    style={{
+                      height: "25px",
+                      width: "25px",
+                      borderRadius: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+                {/* {len === index ? (
+                    <div className="response input">
+                      {!loading ? m.q : <Loading />}
+                    </div>
+                  ) : ( */}
+                <div className="response input">
+                  {/* {!tempLoad ? <Loading /> : <div></div>} */}
+                  <Loading />
+                </div>
+                <div className="mt-1">
+                  <img className=" " src={CopyIcon} alt="logo" />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       )}
     </>

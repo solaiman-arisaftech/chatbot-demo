@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "./sideBar.css";
@@ -8,33 +8,28 @@ import Upgrade_Icon from "../../Image/Upgrade_Icon.svg";
 import Settings_Icon from "../../Image/Setting_Icon.svg";
 const SideBar = () => {
   const navigate = useNavigate();
-  // const navLinkStyles =({isActive})=>{
-  //   return{
-  //     background: isActive ? 'rgba(38, 74, 88, 1);' : 'none',
-  //     fontWeight: isActive ? 'bold' : 'normal',
-  //   }
-  // }
+  const navLinkStyles = ({ isActive }: any) => {
+    return {
+      backgroundColor: isActive ? "rgba(38, 74, 88, 1)" : "",
+      fontWeight: isActive ? "bold" : "normal",
+      color: "white",
+      textDecoration: "none",
+    };
+  };
 
   return (
     <>
       <div className="title  d-flex ">
         <div className="logo line1">ChatBot</div>
-        {/* <hr style={{height:"1px", backgroundColor:"rgba(210, 210, 210, 0.3)"}}/>           */}
-        <div className="gap " onClick={() => navigate("/")}>
+        <NavLink to="/" className="gap " style={navLinkStyles}>
           <img src={Faq_Icon} alt="" />
-          <div className="p-font" style={{ cursor: "pointer" }}>
-            Chat
-          </div>
-        </div>
-        <div className="gap  " onClick={() => navigate("/data")}>
+          <div className="p-font">Chat</div>
+        </NavLink>
+        <NavLink to="/data" className="gap  " style={navLinkStyles}>
           <img src={Upgrade_Icon} alt="" />
-          <div className="p-font" style={{ cursor: "pointer" }}>
-            Data
-          </div>
-        </div>
+          <div className="p-font">Data</div>
+        </NavLink>
       </div>
-
-      {/* </div> */}
 
       <div className="left-sidebar-footer line2">
         <div className="gap">
