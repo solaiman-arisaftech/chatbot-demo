@@ -47,11 +47,11 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
     setInputValue(promptRef.current?.value);
     const res = await axios({
       method: "post",
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Accept: "application/json",
-        type: "formData",
-      },
+      // headers: {
+      //   "Content-Type": "multipart/form-data",
+      //   Accept: "application/json",
+      //   type: "formData",
+      // },
       url: "http://5.189.160.223:8054/chat",
       data: {
         token: token,
@@ -60,7 +60,7 @@ const MidContent: React.FC<MidContentProps> = ({ arr, setArr }) => {
     });
 
     token +=
-      "Query: " + promptRef.current?.value + "Response: " + res.data.response;
+      " Query: " + promptRef.current?.value + " Response: " + res.data.response;
     setToken(token);
     tempArr = token.split(" ");
     tokLen += tempArr.length;
